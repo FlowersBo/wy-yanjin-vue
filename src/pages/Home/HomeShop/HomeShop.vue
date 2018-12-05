@@ -1,15 +1,16 @@
 <template>
   <div>
-    <section class="shop" v-for="(list,index) in datahome.cateList" :key="index">
-      <header class="shop_header">{{list.name}}</header>
+    <section class="shop" v-if="newCateList[indexs]">
+      <header class="shop_header">{{newCateList[indexs].name}}</header>
+      <!--<img :src="list.bannerUrl" alt="">-->
       <ul class="shop_list">
-        <li class="shop_li" v-for="(item,index) in list.itemList"  :key="index">
+        <li class="shop_li" v-for="(item,index) in newCateList[indexs].itemList"  :key="index">
           <div class="shop_img">
-            <img v-lazy="item.listPicUrl" alt="">
+            <img :src="item.listPicUrl" alt="" :timer="timer">
           </div>
-          <div class="shop_top">趣味设计趣味设计趣味设计趣味设计</div>
-          <div class="shop_center">跟我走</div>
-          <div class="shop_bottom">￥39</div>
+          <div class="shop_top">{{item.simpleDesc}}</div>
+          <div class="shop_center">{{item.name}}</div>
+          <div class="shop_bottom">￥{{item.retailPrice}}</div>
         </li>
       </ul>
       <Split/>
@@ -18,19 +19,50 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   export default {
-    props:{
-      datahome:Object
+    data(){
+      return{
+        indexs:1,
+        newCateList:[]
+      }
     },
     mounted(){
+      this.newCateList = this.datahome.cateList
+      if(this.$route.params.index){
+        this.indexs = this.$route.params.index
+      }
+    },
+    computed:{
+      ...mapState(['datahome']),
+      indexParams(){
+        this.indexs = this.$route.params.index
+      },
+      timer(){
+        return Date.now()
+      }
+    },
+    methods:{
+     /* pushWatch(id){
+        this.$router.push(`/home/message/detail/${id}`)
+      },*/
 
     },
+    watch:{
+      indexParams(){
+        this.indexs = this.$route.params.index
+      },
+      datahome(){
+        this.newCateList = this.datahome.cateList
+      }
+    }
   }
 </script>
 <style lang="stylus" rel="stylesheet/stylus" scoped>
-  @import "../../common/stylus/mixins.styl"
+  @import "../../../common/stylus/mixins.styl"
   .shop
     width 100%
+    padding-top px2rem(170)
     .shop_header
       width 100%
       height px2rem(120)

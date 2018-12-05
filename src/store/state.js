@@ -4,5 +4,6 @@
 export default {
   datahome:{},
   datanav:{},
-  datatopic:{}
+  datatopic:{},
+  index:0
 }

@@ -3,11 +3,11 @@
     <div class="countdown_date">
       <span class="countdown_date_top">严选限时购</span>
       <div class="countdown_date_center">
-        <span class="timer">12</span>
+        <span class="timer">{{hr}}</span>
         <span class="symbol">:</span>
-        <span class="timer">12</span>
+        <span class="timer">{{min}}</span>
         <span class="symbol">:</span>
-        <span class="timer">12</span>
+        <span class="timer">{{sec}}</span>
       </div>
       <span class="countdown_date_bottom">下一场 22:00 开始</span>
     </div>
@@ -18,13 +18,60 @@
         <span class="money_text">￥49</span>
       </div>
     </div>
+   <!-- <div >{{ `${hr}小时 ${min}分钟 ${sec}秒`}}</div>-->
   </section>
-
 </template>
 
 <script>
   export default{
-
+    data() {
+      return {
+       hr: '01',
+       min: 59,
+       sec: 59
+      }
+    },
+    mounted: function () {
+      this.countdown()
+    },
+    methods: {
+      /*countdown: function () {
+        const end = Date.parse(new Date('2017-12-01'))
+        const now = Date.parse(new Date())
+        const msec = end - now
+        let day = parseInt(msec / 1000 / 60 / 60 / 24)
+        let hr = parseInt(msec / 1000 / 60 / 60 % 24)
+        let min = parseInt(msec / 1000 / 60 % 60)
+        let sec = parseInt(msec / 1000 % 60)
+        this.day = day
+        this.hr = hr > 9 ? hr : '0' + hr
+        this.min = min > 9 ? min : '0' + min
+        this.sec = sec > 9 ? sec : '0' + sec
+        const that = this
+        setTimeout(function () {
+          that.countdown()
+        }, 1000)
+      }*/
+      countdown(){
+        this.timer=setInterval(()=>{
+          this.sec--
+          if( this.sec===0){
+            this.sec=59
+            this.min--
+            if(this.min===0){
+              this.min=59
+              this.hr--
+              if(this.hr===0&&this.min===0&&this.sec===0){
+                clearInterval(this.timer)
+                this.hr=0
+                this.min=0
+                this.sec=0
+              }
+            }
+          }
+        },1000)
+      }
+    }
   }
 </script>
 

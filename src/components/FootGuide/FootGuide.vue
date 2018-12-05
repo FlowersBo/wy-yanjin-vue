@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    <a href="javascript:;" class="foot_item" :class="{on:$route.path==='/home'}" @click="goto('/home')">
+    <a href="javascript:;" class="foot_item" :class="{on:$route.path.includes('/home')}" @click="goto('/home')">
     <span class="item_icon">
       <i class="iconfont icon-shouye"></i>
     </span>
@@ -35,11 +35,16 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   export default {
   methods:{
+    ...mapState(['index']),
       goto(path){
         this.$router.replace(path)
       }
+  },
+  mounted(){
+    console.log(this.index);
   }
   }
 </script>

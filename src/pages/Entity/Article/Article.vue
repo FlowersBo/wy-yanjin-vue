@@ -4,7 +4,7 @@
       <div class="article_content_li" v-for="(item,index) in column" :key="index">
         <div class="article_content_img">
           <img v-lazy="item.picUrl" alt="">
-          <div class="text_top">{{item.articleCount}}</div>
+          <div class="text_top"><span class="text_top_item">{{item.articleCount}}</span></div>
         </div>
         <div class="text_bottom">{{item.title}}</div>
       </div>
@@ -49,11 +49,18 @@
         .text_top
           position absolute
           color white
-          width 100%
+          width 70%
+          height px2rem(35)
           text-align right
           font-size px2rem(25)
           top px2rem(4)
           right 0
+          background url("./img/bg.png")
+          .text_top_item
+            position absolute
+            top px2rem(4)
+            right px2rem(5)
+            width px2rem(164)
       .text_bottom
         font-size px2rem(27)
         color #333

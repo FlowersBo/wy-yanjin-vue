@@ -10,9 +10,8 @@ import Split from './components/Split/Split.vue'
 import VueLazyload from 'vue-lazyload'
 import loading from './assess/images/timg.gif'
 Vue.use(VueLazyload, {
-  loading
+  loading,
 })
-
 //注册全局组件
 Vue.component('Split',Split)
 import './mock/mockServer'

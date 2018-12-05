@@ -22,7 +22,7 @@
       <img src="../../assess/images/cart.png" alt="">
       <span class="cart_img_text">去添加点什么吧</span>
     </div>
-    <button class="btn">登录</button>
+    <button class="btn" @click="$router.replace('./person')">登录</button>
   </section>
 </template>
 
