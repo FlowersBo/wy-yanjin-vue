@@ -35,17 +35,7 @@
 </template>
 
 <script>
-  import {mapState} from 'vuex'
   export default {
-  methods:{
-    ...mapState(['index']),
-      goto(path){
-        this.$router.replace(path)
-      }
-  },
-  mounted(){
-    console.log(this.index);
-  }
   }
 </script>
 
