@@ -16,7 +16,7 @@
     </section>
   </header>
   <HomeShop v-if="isIndex!=0"/>
-  <div v-else="isIndex===0">
+  <div v-else>
     <div class="homewrap" >
       <section class="home" ref="homemm">
         <div ref="homeContent">
@@ -121,7 +121,7 @@
           new BScroll(this.$refs.zbNav,{
             click:true,
             scrollX:true,
-          /*  preventDefault:false,*/
+            preventDefault:false,
           })
         })
         this.$nextTick(()=>{
