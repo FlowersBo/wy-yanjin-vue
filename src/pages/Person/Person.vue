@@ -82,7 +82,6 @@
         <div class="register_lodinto" @click="gotomethods">其它账号登录</div>
       </div>
     </div>
-    <div class="ems"></div>
   </section>
 </template>
 

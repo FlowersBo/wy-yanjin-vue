@@ -36,6 +36,11 @@
 
 <script>
   export default {
+    methods:{
+      goto(path){
+        this.$router.replace(path)
+      }
+    }
   }
 </script>
 
